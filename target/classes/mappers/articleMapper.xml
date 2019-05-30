@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.board.mappers.ArticleMapper">
+	<select id="list" resultType="com.example.board.domain.ArticleVO">
+	<![CDATA[
+		select * from (select rownum R, A.* from (select * from article where article_id > 0 order by article_id desc, createdAt desc) A) where R between #{pageStart} and #{pageEnd} 
+	]]>  
+	</select>
+	<select id="listCount" resultType="java.lang.Integer">
+	    select count(board_id) from article where article_id > 0
+	</select>
+	<insert id="add">
+	    insert into article (article_id, board_id, writer_name, email, title, author, password, ref, step, depth, content, ip, secret)
+	    values(article_sequence.nextval, #{board_id}, #{writer_name}, #{email}, #{title}, #{author}, #{password}, #{ref}, #{step}, #{depth}, #{content}, #{ip}, #{secret})
+	</insert>
+</mapper>

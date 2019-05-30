@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+#content form {
+	margin-top: 20px;
+	line-height: 2;
+}
+#input_file_area .attachBtn {
+	display: none;
+}
+#input_file_area .attachBtn.on {
+	display: block;
+}
+#input_file_area a {
+	background-color: #E0E0E0;
+	font-size: 12px;
+	padding: 1px;
+	border: 1px solid #E0E0E0;
+}
+#content #addBtn {
+	width: 200px;
+	font-size: 14px;
+	padding: 10px;
+	background-color: blue;
+	color: white;
+	border-radius: 5px 5px 5px 5px;
+	margin-top:30px;
+}
+#content table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	margin-top: 20px;
+	width: 100%;
+}
+#content td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	padding: 5px;
+	line-height: 1.5;
+}

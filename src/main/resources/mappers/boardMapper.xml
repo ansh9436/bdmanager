@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.board.mappers.BoardMapper">
+	<select id="list" resultType="com.example.board.domain.BoardVO">
+	<![CDATA[
+		select * from (select rownum R, A.* from (select * from board where board_id > 0 order by board_id desc, creating_date desc) A) where R between #{pageStart} and #{pageEnd} 
+	]]>  
+	</select>
+	<select id="listCount" resultType="java.lang.Integer">
+	    select count(board_id) from board where board_id > 0
+	</select>
+	<insert id="add">
+	    insert into board (board_id, board_name, board_type, url, secret, read_allow, write_allow, reply_allow, modify_allow, remove, download, upload, nAttach, aSize, display_format, board_desc)
+	    values(board_sequence.nextval, #{board_name}, #{board_type}, #{url}, #{secret}, #{read_allow}, #{write_allow}, #{reply_allow}, #{modify_allow}, #{remove}, #{download}, #{upload}, #{nAttach}, #{aSize}, #{display_format}, #{board_desc})
+	</insert>
+	<!-- 게시판에 따른 메뉴 정보를 얻어내는 부분 -->
+	<select id="getMenuInfo" resultType="com.example.board.domain.MenuVO">
+	    select board_id, url, board_name from board where board_id > 0 order by board_id desc
+	</select>
+	<select id="read" resultType="com.example.board.domain.BoardVO">
+	    select * from board where board_id = #{board_id}
+	</select>
+</mapper>

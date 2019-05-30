@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+ul {list-style:none;}
+a {vertical-align:top; text-decoration:none;}
+a:hover {color:orange;}
+#gnb {position:relative; width:870px; height: 70px; padding-top: 20px;}
+#gnb:after {content:" "; display:block; clear:both;}
+#gnb .item {width: 260px; text-align: center; float: left; margin-right:10px; height:20px;}
+#gnb .item .menu {float:left; position:relative; width:160px; height:20px;}
+#gnb .item .menu span {position:absolute; width:100%; height:20px;}
+#gnb .item .sub {display:none; float:left; position:relative; padding:10px 0; font-size:12px;}
+#gnb .item .sub li {float: left; margin:0 10px; text-align: center; }
+#gnb .item.on .sub {display:block;}
+#gnb .item #sub1 {width: 680px; margin-left: 0px;}
+#gnb .item li { float: left; margin: 0 10px; }
